@@ -1,16 +1,11 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -21,3 +16,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Ciao"
 include(":app")
+include(":core:common")
+include(":core:ui")
+include(":core:domain")
+include(":core:data")
+include(":feature:home")

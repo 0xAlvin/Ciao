@@ -1,6 +1,11 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.kotlin.compose) apply false
+    id(Dependencies.Plugins.ANDROID_APPLICATION) version Versions.AGP apply false
+    id(Dependencies.Plugins.KOTLIN_ANDROID) version Versions.KOTLIN apply false
+    id(Dependencies.Plugins.KOTLIN_COMPOSE) version Versions.KOTLIN apply false
+    id(Dependencies.Plugins.HILT) version Versions.HILT apply false
+    id(Dependencies.Plugins.KSP) version Versions.KSP apply false
+}
+
+tasks.register("clean", Delete::class) {
+    delete(rootProject.layout.buildDirectory)
 }

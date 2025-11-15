@@ -1,23 +1,29 @@
+import extensions.*
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    id(Dependencies.Plugins.ANDROID_APPLICATION)
+    id(Dependencies.Plugins.KOTLIN_ANDROID)
+    id(Dependencies.Plugins.KOTLIN_COMPOSE)
+    id(Dependencies.Plugins.KSP)
+    id(Dependencies.Plugins.HILT)
 }
 
 android {
-    namespace = "com.example.ciao"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = AndroidConfig.NAMESPACE
+    compileSdk = AndroidConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId = "com.example.ciao"
-        minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AndroidConfig.APPLICATION_ID
+        minSdk = AndroidConfig.MIN_SDK
+        targetSdk = AndroidConfig.TARGET_SDK
+        versionCode = AndroidConfig.VERSION_CODE
+        versionName = AndroidConfig.VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -29,32 +35,46 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = AndroidConfig.JAVA_VERSION
+        targetCompatibility = AndroidConfig.JAVA_VERSION
     }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = AndroidConfig.JVM_TARGET
     }
+
     buildFeatures {
         compose = true
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    // Feature modules
+    implementationProject(":feature:home")
+
+    // Core modules
+    implementationProject(":core:ui")
+    implementationProject(":core:common")
+    implementationProject(":core:data")
+    implementationProject(":core:domain")
+
+    // AndroidX
+    androidxCore()
+
+    // Compose
+    compose()
+
+    // Hilt
+    hilt()
+
+    // Testing
+    testing()
 }
