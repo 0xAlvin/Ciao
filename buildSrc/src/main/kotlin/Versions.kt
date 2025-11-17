@@ -30,5 +30,5 @@ object Versions {
     //firebase
     const val FIREBASE_BOM = "34.5.0"
     const val GOOGLE_SERVICES = "4.4.4"
-
+    const val ROOM = "2.8.3"
 }

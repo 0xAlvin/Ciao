@@ -88,4 +88,10 @@ fun DependencyHandler.firebase() {
     implementation(Dependencies.Firebase.FIREBASE_AUTH)
     implementation(Dependencies.Firebase.FIREBASE_ANALYTICS)
 }
+fun DependencyHandler.room(){
+    implementation(Dependencies.Room.ROOM)
+    implementation(Dependencies.Room.PAGING_3)
+    implementation(Dependencies.Room.ROOM_COROUTINES)
+    implementation(Dependencies.Room.ROOM_TEST_HELPER)
+}
 

@@ -72,4 +72,5 @@ dependencies {
     hilt()
     testing()
     firebase()
+    room()
 }

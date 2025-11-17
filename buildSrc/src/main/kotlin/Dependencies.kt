@@ -57,4 +57,10 @@ object Dependencies {
         const val FIREBASE_AUTH = "com.google.firebase:firebase-auth"
         const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics"
     }
+    object Room {
+        const val ROOM = "androidx.room:room-runtime:${Versions.ROOM}"
+        const val ROOM_COROUTINES = "androidx.room:room-ktx:${Versions.ROOM}"
+        const val PAGING_3 = "androidx.room:room-paging:${Versions.ROOM}"
+        const val ROOM_TEST_HELPER = "androidx.room:room-testing:${Versions.ROOM}"
+    }
 }
