@@ -32,4 +32,5 @@ object Versions {
     const val GOOGLE_SERVICES = "4.4.4"
     const val ROOM = "2.8.3"
     const val DATASTORE = "1.1.7"
+    const val COIL = "3.3.0"
 }

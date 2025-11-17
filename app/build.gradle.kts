@@ -74,4 +74,5 @@ dependencies {
     firebase()
     room()
     datastore()
+    coil()
 }

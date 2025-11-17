@@ -95,6 +95,10 @@ fun DependencyHandler.room(){
     implementation(Dependencies.Room.ROOM_TEST_HELPER)
 }
 fun DependencyHandler.datastore(){
-    implementation(Dependencies.DataStore)
+    implementation(Dependencies.DataStore.DATASTORE)
+}
+fun DependencyHandler.coil(){
+    implementation(Dependencies.Coil.COIL_COMPOSE)
+    implementation(Dependencies.Coil.COIL_NETWORK)
 }
 
