@@ -94,4 +94,7 @@ fun DependencyHandler.room(){
     implementation(Dependencies.Room.ROOM_COROUTINES)
     implementation(Dependencies.Room.ROOM_TEST_HELPER)
 }
+fun DependencyHandler.datastore(){
+    implementation(Dependencies.DataStore)
+}
 

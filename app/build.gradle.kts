@@ -73,4 +73,5 @@ dependencies {
     testing()
     firebase()
     room()
+    datastore()
 }

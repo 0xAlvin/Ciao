@@ -63,4 +63,7 @@ object Dependencies {
         const val PAGING_3 = "androidx.room:room-paging:${Versions.ROOM}"
         const val ROOM_TEST_HELPER = "androidx.room:room-testing:${Versions.ROOM}"
     }
+    object DataStore {
+        const val DATASTORE = "androidx.datastore:datastore-preferences:${Versions.DATASTORE}"
+    }
 }

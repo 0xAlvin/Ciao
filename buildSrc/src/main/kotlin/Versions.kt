@@ -31,4 +31,5 @@ object Versions {
     const val FIREBASE_BOM = "34.5.0"
     const val GOOGLE_SERVICES = "4.4.4"
     const val ROOM = "2.8.3"
+    const val DATASTORE = "1.1.7"
 }
