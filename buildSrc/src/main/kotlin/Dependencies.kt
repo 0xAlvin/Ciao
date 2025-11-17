@@ -50,5 +50,11 @@ object Dependencies {
         const val KOTLIN_COMPOSE = "org.jetbrains.kotlin.plugin.compose"
         const val HILT = "com.google.dagger.hilt.android"
         const val KSP = "com.google.devtools.ksp"
+        const val GOOGLE_SERVICES = "com.google.gms.google-services"
+    }
+    object Firebase {
+        const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.FIREBASE_BOM}"
+        const val FIREBASE_AUTH = "com.google.firebase:firebase-auth"
+        const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics"
     }
 }

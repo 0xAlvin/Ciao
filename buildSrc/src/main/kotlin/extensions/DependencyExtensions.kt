@@ -4,7 +4,7 @@ import Dependencies
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 // Basic dependency configurations
-fun DependencyHandler.implementation(dependency: String) {
+fun DependencyHandler.implementation(dependency: Any) {
     add("implementation", dependency)
 }
 
@@ -83,3 +83,9 @@ fun DependencyHandler.testing() {
     androidTestImplementationPlatform(Dependencies.Compose.BOM)
     androidTestImplementation(Dependencies.Compose.UI_TEST_JUNIT4)
 }
+fun DependencyHandler.firebase() {
+    implementation(platform(Dependencies.Firebase.FIREBASE_BOM)) // REQUIRED
+    implementation(Dependencies.Firebase.FIREBASE_AUTH)
+    implementation(Dependencies.Firebase.FIREBASE_ANALYTICS)
+}
+

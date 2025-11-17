@@ -6,6 +6,7 @@ plugins {
     id(Dependencies.Plugins.KOTLIN_COMPOSE)
     id(Dependencies.Plugins.KSP)
     id(Dependencies.Plugins.HILT)
+    id(Dependencies.Plugins.GOOGLE_SERVICES)
 }
 
 android {
@@ -66,15 +67,9 @@ dependencies {
     implementationProject(":core:data")
     implementationProject(":core:domain")
 
-    // AndroidX
     androidxCore()
-
-    // Compose
     compose()
-
-    // Hilt
     hilt()
-
-    // Testing
     testing()
+    firebase()
 }

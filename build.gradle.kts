@@ -4,6 +4,7 @@ plugins {
     id(Dependencies.Plugins.KOTLIN_COMPOSE) version Versions.KOTLIN apply false
     id(Dependencies.Plugins.HILT) version Versions.HILT apply false
     id(Dependencies.Plugins.KSP) version Versions.KSP apply false
+    id(Dependencies.Plugins.GOOGLE_SERVICES) version Versions.GOOGLE_SERVICES apply false
 }
 
 tasks.register("clean", Delete::class) {

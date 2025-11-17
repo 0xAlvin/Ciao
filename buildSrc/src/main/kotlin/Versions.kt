@@ -26,4 +26,9 @@ object Versions {
     const val JUNIT = "4.13.2"
     const val JUNIT_EXT = "1.2.1"
     const val ESPRESSO = "3.6.1"
+
+    //firebase
+    const val FIREBASE_BOM = "34.5.0"
+    const val GOOGLE_SERVICES = "4.4.4"
+
 }
