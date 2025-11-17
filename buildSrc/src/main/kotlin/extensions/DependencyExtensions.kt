@@ -3,7 +3,6 @@ package extensions
 import Dependencies
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-// Basic dependency configurations
 fun DependencyHandler.implementation(dependency: Any) {
     add("implementation", dependency)
 }
@@ -24,7 +23,7 @@ fun DependencyHandler.ksp(dependency: String) {
     add("ksp", dependency)
 }
 
-// Platform dependencies
+
 fun DependencyHandler.implementationPlatform(dependency: String) {
     add("implementation", platform(dependency))
 }
@@ -33,16 +32,16 @@ fun DependencyHandler.androidTestImplementationPlatform(dependency: String) {
     add("androidTestImplementation", platform(dependency))
 }
 
-// Project dependencies
+
 fun DependencyHandler.implementationProject(path: String) {
     add("implementation", project(mapOf("path" to path)))
 }
 
-fun DependencyHandler.apiProject(path: String) {
-    add("api", project(mapOf("path" to path)))
-}
+//fun DependencyHandler.apiProject(path: String) {
+//    add("api", project(mapOf("path" to path)))
+//}
 
-// Grouped dependencies for convenience
+
 fun DependencyHandler.androidxCore() {
     implementation(Dependencies.AndroidX.CORE_KTX)
     implementation(Dependencies.AndroidX.LIFECYCLE_RUNTIME_KTX)
@@ -55,6 +54,7 @@ fun DependencyHandler.compose() {
     implementation(Dependencies.Compose.UI_GRAPHICS)
     implementation(Dependencies.Compose.UI_TOOLING_PREVIEW)
     implementation(Dependencies.Compose.MATERIAL3)
+    implementation(Dependencies.Compose.MATERIAL_ICONS_EXTENDED)
     debugImplementation(Dependencies.Compose.UI_TOOLING)
     debugImplementation(Dependencies.Compose.UI_TEST_MANIFEST)
 }

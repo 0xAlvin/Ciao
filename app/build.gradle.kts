@@ -69,6 +69,7 @@ dependencies {
 
     androidxCore()
     compose()
+    composeNavigation()
     hilt()
     testing()
     firebase()
