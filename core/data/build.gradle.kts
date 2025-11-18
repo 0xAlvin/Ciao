@@ -26,11 +26,12 @@ android {
 }
 
 dependencies {
+
     implementationProject(":core:common")
     implementationProject(":core:domain")
-
     implementation(Dependencies.AndroidX.CORE_KTX)
     coroutines()
     hilt()
     testing()
+    firebase()
 }
