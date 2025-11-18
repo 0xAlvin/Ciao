@@ -84,7 +84,8 @@ fun DependencyHandler.testing() {
     androidTestImplementation(Dependencies.Compose.UI_TEST_JUNIT4)
 }
 fun DependencyHandler.firebase() {
-    implementation(platform(Dependencies.Firebase.FIREBASE_BOM)) // REQUIRED
+    implementation(platform(Dependencies.Firebase.FIREBASE_BOM))
+    implementation(Dependencies.Firebase.FIREBASE_FIRESTORE)
     implementation(Dependencies.Firebase.FIREBASE_AUTH)
     implementation(Dependencies.Firebase.FIREBASE_ANALYTICS)
 }

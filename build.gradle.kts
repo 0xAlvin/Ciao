@@ -5,6 +5,7 @@ plugins {
     id(Dependencies.Plugins.HILT) version Versions.HILT apply false
     id(Dependencies.Plugins.KSP) version Versions.KSP apply false
     id(Dependencies.Plugins.GOOGLE_SERVICES) version Versions.GOOGLE_SERVICES apply false
+    id(Dependencies.Plugins.ANDROID_LIBRARY) version Versions.AGP apply false
 }
 
 tasks.register("clean", Delete::class) {

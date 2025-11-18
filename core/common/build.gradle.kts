@@ -3,15 +3,16 @@ import extensions.*
 plugins {
     id(Dependencies.Plugins.ANDROID_LIBRARY)
     id(Dependencies.Plugins.KOTLIN_ANDROID)
+    id(Dependencies.Plugins.KSP)
+    id(Dependencies.Plugins.HILT)
 }
 
 android {
-    namespace = "${AndroidConfig.NAMESPACE}.core.common"
+    namespace = "${AndroidConfig.NAMESPACE}.core.data"
     compileSdk = AndroidConfig.COMPILE_SDK
 
     defaultConfig {
         minSdk = AndroidConfig.MIN_SDK
-        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
     compileOptions {
@@ -25,7 +26,10 @@ android {
 }
 
 dependencies {
+    implementationProject(":core:domain")
+
     implementation(Dependencies.AndroidX.CORE_KTX)
     coroutines()
+    hilt()
     testing()
 }

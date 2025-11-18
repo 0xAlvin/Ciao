@@ -54,9 +54,11 @@ object Dependencies {
     }
     object Firebase {
         const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.FIREBASE_BOM}"
+        const val FIREBASE_FIRESTORE = "com.google.firebase:firebase-firestore"
         const val FIREBASE_AUTH = "com.google.firebase:firebase-auth"
         const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics"
     }
+
     object Room {
         const val ROOM = "androidx.room:room-runtime:${Versions.ROOM}"
         const val ROOM_COROUTINES = "androidx.room:room-ktx:${Versions.ROOM}"
