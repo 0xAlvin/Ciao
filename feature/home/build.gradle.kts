@@ -31,9 +31,9 @@ android {
 }
 
 dependencies {
-    implementationProject(":core:common")
-    implementationProject(":core:ui")
-    implementationProject(":core:domain")
+    implementation(project(":core:ui"))
+    implementation(project(":core:data"))
+    implementation(project(":core:common"))
 
     implementation(Dependencies.AndroidX.CORE_KTX)
     implementation(Dependencies.AndroidX.LIFECYCLE_RUNTIME_KTX)
@@ -43,5 +43,5 @@ dependencies {
     compose()
     coroutines()
     hilt()
-    testing()
+    coil()
 }

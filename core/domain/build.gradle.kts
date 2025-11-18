@@ -24,9 +24,8 @@ android {
 }
 
 dependencies {
-    implementationProject(":core:common")
-
+    implementation(project(":core:common"))
     implementation(Dependencies.AndroidX.CORE_KTX)
+
     coroutines()
-    testing()
 }

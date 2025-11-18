@@ -3,12 +3,10 @@ import extensions.*
 plugins {
     id(Dependencies.Plugins.ANDROID_LIBRARY)
     id(Dependencies.Plugins.KOTLIN_ANDROID)
-    id(Dependencies.Plugins.KSP)
-    id(Dependencies.Plugins.HILT)
 }
 
 android {
-    namespace = "${AndroidConfig.NAMESPACE}.core.data"
+    namespace = "${AndroidConfig.NAMESPACE}.core.common"
     compileSdk = AndroidConfig.COMPILE_SDK
 
     defaultConfig {
@@ -26,10 +24,7 @@ android {
 }
 
 dependencies {
-    implementationProject(":core:domain")
-
     implementation(Dependencies.AndroidX.CORE_KTX)
+
     coroutines()
-    hilt()
-    testing()
 }

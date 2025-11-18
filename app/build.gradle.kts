@@ -19,7 +19,6 @@ android {
         targetSdk = AndroidConfig.TARGET_SDK
         versionCode = AndroidConfig.VERSION_CODE
         versionName = AndroidConfig.VERSION_NAME
-
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
 
         vectorDrawables {
@@ -58,22 +57,13 @@ android {
 }
 
 dependencies {
-    // Feature modules
     implementationProject(":feature:home")
-
-    // Core modules
     implementationProject(":core:ui")
-    implementationProject(":core:common")
     implementationProject(":core:data")
-    implementationProject(":core:domain")
 
     androidxCore()
     compose()
     composeNavigation()
     hilt()
-    testing()
     firebase()
-    room()
-    datastore()
-    coil()
 }

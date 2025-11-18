@@ -75,13 +75,14 @@ fun DependencyHandler.coroutines() {
     testImplementation(Dependencies.Coroutines.TEST)
 }
 
-fun DependencyHandler.testing() {
-    testImplementation(Dependencies.Testing.JUNIT)
-    testImplementation(Dependencies.Testing.COROUTINES)
-    androidTestImplementation(Dependencies.Testing.JUNIT_EXT)
-    androidTestImplementation(Dependencies.Testing.ESPRESSO_CORE)
-    androidTestImplementationPlatform(Dependencies.Compose.BOM)
-    androidTestImplementation(Dependencies.Compose.UI_TEST_JUNIT4)
+fun DependencyHandler.testingImplementation() {
+    add("testImplementation", Dependencies.Testing.JUNIT)
+    add("androidTestImplementation", Dependencies.Testing.JUNIT)
+    add("androidTestImplementation", Dependencies.Testing.ESPRESSO_CORE)
+}
+fun DependencyHandler.androidTestImplementation() {
+    add("androidTestImplementation", Dependencies.Testing.JUNIT)
+    add("androidTestImplementation", Dependencies.Testing.ESPRESSO_CORE)
 }
 fun DependencyHandler.firebase() {
     implementation(platform(Dependencies.Firebase.FIREBASE_BOM))
