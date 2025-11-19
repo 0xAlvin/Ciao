@@ -1,7 +1,5 @@
 package com.example.ciao.core.data.repository
 
-
-import AuthResult
 import User
 import com.example.ciao.core.domain.repository.AuthRepoInterface
 import com.google.firebase.auth.FirebaseAuth
@@ -11,6 +9,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
+import com.example.ciao.common.result.Result
 
 class AuthRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth
@@ -18,14 +17,14 @@ class AuthRepository @Inject constructor(
     override suspend fun signInWithEmail(
         email: String,
         password: String
-    ): AuthResult<User> {
+    ): Result<User> {
         return try {
             val result = firebaseAuth.signInWithEmailAndPassword(email, password)
             if (!result.isComplete){
-                return AuthResult.Loading
+                return Result.Loading
             }
             val user = result.await().user
-            return AuthResult.Success(
+            return Result.Success(
                 User(
                     uid = user!!.uid,
                     email = user.email,
@@ -33,20 +32,20 @@ class AuthRepository @Inject constructor(
                 )
             )
         }catch (e : FirebaseAuthException){
-            AuthResult.Error("${e.message}Unknown Error Occurred")
+            Result.Error("${e.message}Unknown Error Occurred")
         }
     }
 
     override suspend fun signUpWithEmail(
         email: String,
         password: String
-    ): AuthResult<User> {
+    ): Result<User> {
         return try {
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
             val firebaseUser = result.user
 
             if (firebaseUser != null) {
-                AuthResult.Success(
+                Result.Success(
                     User(
                         uid = firebaseUser.uid,
                         email = firebaseUser.email,
@@ -54,32 +53,32 @@ class AuthRepository @Inject constructor(
                     )
                 )
             } else {
-                AuthResult.Error("Sign up failed")
+                Result.Error("Sign up failed")
             }
         } catch (e: FirebaseAuthException) {
-            AuthResult.Error(e.message ?: "Unknown error occurred")
+            Result.Error(e.message ?: "Unknown error occurred")
         } catch (e: Exception) {
-            AuthResult.Error(e.message ?: "Unknown error occurred")
+            Result.Error(e.message ?: "Unknown error occurred")
         }
     }
 
-    override suspend fun signOut(): AuthResult<Unit> {
+    override suspend fun signOut(): Result<Unit> {
         return try {
             firebaseAuth.signOut()
-            AuthResult.Success(Unit)
+            Result.Success(Unit)
         } catch (e: Exception) {
-            AuthResult.Error(e.message ?: "Failed to sign out")
+            Result.Error(e.message ?: "Failed to sign out")
         }
     }
 
-    override suspend fun resetPassword(email: String): AuthResult<Unit> {
+    override suspend fun resetPassword(email: String): Result<Unit> {
         return try {
             firebaseAuth.sendPasswordResetEmail(email).await()
-            AuthResult.Success(Unit)
+            Result.Success(Unit)
         } catch (e: FirebaseAuthException) {
-            AuthResult.Error(e.message ?: "Failed to send reset email")
+            Result.Error(e.message ?: "Failed to send reset email")
         } catch (e: Exception) {
-            AuthResult.Error(e.message ?: "Unknown error occurred")
+            Result.Error(e.message ?: "Unknown error occurred")
         }
     }
 
