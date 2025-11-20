@@ -34,7 +34,7 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:data"))
     implementation(project(":core:common"))
-
+    implementation(project(":core:domain"))
     implementation(Dependencies.AndroidX.CORE_KTX)
     implementation(Dependencies.AndroidX.LIFECYCLE_RUNTIME_KTX)
     implementation(Dependencies.AndroidX.LIFECYCLE_VIEWMODEL_KTX)
@@ -44,4 +44,5 @@ dependencies {
     coroutines()
     hilt()
     coil()
+    firebase()
 }

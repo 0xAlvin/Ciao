@@ -1,37 +1,36 @@
 package com.example.ciao.core.domain.usecase.base
 
-import Email
-import Password
-import com.example.ciao.core.data.repository.AuthRepository
+import com.example.ciao.core.domain.repository.AuthRepoInterface
 import User
 import javax.inject.Inject
 import com.example.ciao.common.result.Result
-import isValid
+import com.example.ciao.core.domain.model.valueobjects.isValidEmail
+
 
 class LoginUseCase @Inject constructor(
-    private  val authRepository: AuthRepository
+    private  val authRepoInterface: AuthRepoInterface
 ) : UseCase<LoginUseCase.Params, User>() {
+
     override suspend fun execute(parameters: Params): Result<User> {
-        if (parameters.email.value.isEmpty()) {
+        if (parameters.email.isEmpty()) {
             return Result.Error(
-                message = "Email can not be empty"
+                message = "Email cannot be empty"
             )
         }
-        if (parameters.email.isValid(
-                email = parameters.email
-            )){
+        if (parameters.email.isValidEmail(parameters.email)) {
             return Result.Error(
                 message = "Please enter a valid email address"
             )
         }
-        if (parameters.email.value.length < 6) {
+        if (parameters.password.length < 6) {
             return Result.Error(
-                message = "Password must be at-least 6 characters"
+                message = "Password must be at least 6 characters"
             )
         }
-        val response = authRepository.signInWithEmail(
-            email = parameters.email.value,
-            password = parameters.password.value
+
+        val response = authRepoInterface.signInWithEmail(
+            email = parameters.email,
+            password = parameters.password
         )
         if (response.isError) {
             return Result.Error(
@@ -41,9 +40,8 @@ class LoginUseCase @Inject constructor(
         return response
     }
 
-    data class Params (
-        val email: Email,
-        val password: Password
+    data class Params(
+        val email: String,
+        val password: String
     )
-
 }

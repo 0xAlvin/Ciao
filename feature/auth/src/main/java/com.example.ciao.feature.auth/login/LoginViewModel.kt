@@ -1,7 +1,6 @@
 package com.example.ciao.feature.auth.login
 
-import Email
-import Password
+import User
 import com.example.ciao.common.result.Result
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,7 +21,7 @@ class LoginViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
 
-    fun onLoginClick(email: Email, password: Password) {
+    fun onLoginClick(email: String, password: String) {
         _uiState.update { it.copy(isLoading = true, error = null) }
 
         viewModelScope.launch {

@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.ciao.core.ui.theme.CiaoTheme
+import com.example.ciao.feature.auth.login.presentation.LoginScreen
 import com.example.ciao.feature.home.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +16,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CiaoTheme {
-                HomeScreen()
+                LoginScreen(
+                    onLoginSuccess = {}
+                )
             }
         }
     }
