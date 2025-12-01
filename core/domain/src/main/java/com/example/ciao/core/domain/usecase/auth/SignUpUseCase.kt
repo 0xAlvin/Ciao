@@ -1,15 +1,15 @@
-package com.example.ciao.core.domain.usecase.base
+package com.example.ciao.core.domain.usecase.auth
 
 import com.example.ciao.core.domain.repository.AuthRepoInterface
 import User
 import javax.inject.Inject
 import com.example.ciao.common.result.Result
+import com.example.ciao.core.domain.usecase.base.UseCase
 import com.example.ciao.core.domain.model.valueobjects.isValidEmail
 
-
-class LoginUseCase @Inject constructor(
-    private  val authRepoInterface: AuthRepoInterface
-) : UseCase<LoginUseCase.Params, User>() {
+class SignUpUseCase @Inject constructor(
+    private val authRepoInterface: AuthRepoInterface
+) : UseCase<SignUpUseCase.Params, User>() {
 
     override suspend fun execute(parameters: Params): Result<User> {
         if (parameters.email.isEmpty()) {
@@ -28,16 +28,10 @@ class LoginUseCase @Inject constructor(
             )
         }
 
-        val response = authRepoInterface.signInWithEmail(
+        return authRepoInterface.signUpWithEmail(
             email = parameters.email,
             password = parameters.password
         )
-        if (response.isError) {
-            return Result.Error(
-                message = "Login Failed"
-            )
-        }
-        return response
     }
 
     data class Params(
