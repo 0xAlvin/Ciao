@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import com.example.ciao.feature.auth.presentation.common.ShowToast
 
 @Composable
 fun SignUpScreen(
@@ -34,6 +35,12 @@ fun SignUpScreen(
             onSignUpSuccess()
         }
     }
+    
+    // Show toast for errors
+    ShowToast(
+        message = uiState.error,
+        onDismiss = { viewModel.onEvent(SignUpEvent.ErrorDismissed) }
+    )
 
     Scaffold(
         topBar = {
