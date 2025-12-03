@@ -3,6 +3,7 @@ import extensions.*
 plugins {
     id(Dependencies.Plugins.ANDROID_LIBRARY)
     id(Dependencies.Plugins.KOTLIN_ANDROID)
+    id(Dependencies.Plugins.KSP)
 }
 
 android {
@@ -28,4 +29,5 @@ dependencies {
     implementation(Dependencies.AndroidX.CORE_KTX)
 
     coroutines()
+    hilt()
 }

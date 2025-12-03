@@ -58,6 +58,7 @@ android {
 
 dependencies {
     implementationProject(":feature:home")
+    implementationProject(":feature:auth")
     implementationProject(":core:ui")
     implementationProject(":core:data")
 
